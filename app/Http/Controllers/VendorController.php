@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+use App\Models\User;
+
 class VendorController extends Controller
 {
     public function VendorDashboard(){
@@ -25,5 +27,13 @@ class VendorController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/vendor/login');
+    }
+
+    public function VendorProfile(){
+        $id = Auth::user()->id;
+        $vendorData = User::find($id);
+        return view('vendor.vendor_profile_view', compact('vendorData'));
+
+        
     }
 }
