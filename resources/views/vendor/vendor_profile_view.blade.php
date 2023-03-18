@@ -85,7 +85,7 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <form method="POST" action="{{ route('admin.profile.store') }}"
+                                <form method="POST" action="{{ route('vendor.profile.store') }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row mb-3">
@@ -143,20 +143,30 @@
                                             <select name="vendor_join" class="form-select mb-3"
                                                 aria-label="Default select example">
                                                 <option value="">Select Year</option>
-                                                <option value="2023">2023</option>
-                                                <option value="2024">2024</option>
-                                                <option value="2025">2025</option>
-                                                <option value="2025">2026</option>
-                                                <option value="2025">2027</option>
+                                                <option value="2023"
+                                                    {{ $vendorData->vendor_join === '2023' ? 'selected' : '' }}>2023
+                                                </option>
+                                                <option value="2024"
+                                                    {{ $vendorData->vendor_join === '2024' ? 'selected' : '' }}>2024
+                                                </option>
+                                                <option value="2025"
+                                                    {{ $vendorData->vendor_join === '2025' ? 'selected' : '' }}>2025
+                                                </option>
+                                                <option value="2025"
+                                                    {{ $vendorData->vendor_join === '2026' ? 'selected' : '' }}>2026
+                                                </option>
+                                                <option value="2025"
+                                                    {{ $vendorData->vendor_join === '2027' ? 'selected' : '' }}>2027
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Vendor Short Info</h6>
+                                            <h6 class="mb-0">Vendor Info</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <textarea class="form-control" name="vendor_short_info" rows="3"></textarea>
+                                            <textarea class="form-control" name="vendor_short_info" rows="3" placeholder="Vendor info">{{ $vendorData->vendor_short_info }}</textarea>
                                         </div>
                                     </div>
 
