@@ -374,7 +374,7 @@
                     <li><a class="dropdown-item" href="{{ route('vendor.profile') }}"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item" href="{{ route('admin.change.password') }}"><i
+                    <li><a class="dropdown-item" href="{{ route('vendor.change.password') }}"><i
                                 class="bx bx-cog"></i><span>Change
                                 Password</span></a>
                     </li>

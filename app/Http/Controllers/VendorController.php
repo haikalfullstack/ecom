@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
-use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class VendorController extends Controller
 {
@@ -62,6 +63,31 @@ class VendorController extends Controller
             'alert-type' => "success"
         );
         return redirect()->back()->with($notification);
+
+    }
+
+    public function VendorChangePassword(){
+        return view('vendor.vendor_change_password');
+    }
+
+    public function VendorUpdatePassword(Request $request){
+        // validation 
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        // Match the old password
+        if(!Hash::check($request->old_password, auth::user()->password)){
+            return back()->with('error', 'Old password does not match');
+        }
+
+        // Update new password
+        User::whereId(auth::user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with('status', 'Password changed successfully');
 
     }
 }
