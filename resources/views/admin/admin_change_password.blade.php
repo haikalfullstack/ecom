@@ -25,7 +25,7 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <form method="POST" action="{{ route('admin.profile.store') }}">
+                                <form method="POST" action="{{ route('update.password') }}">
                                     @csrf
                                     @if (session('status'))
                                         <div class="alert alert-success" role="alert">
