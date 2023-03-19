@@ -224,19 +224,28 @@
                                         <form method="POST" action="{{ route('register') }}">
                                             @csrf
                                             <div class="form-group">
-                                                <input id="name" type="text" required="" name="name"
+                                                <input id="name" type="text" name="name"
                                                     placeholder="Name" />
+                                                @error('name')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input id="email" type="email" required="" name="email"
+                                                <input id="email" type="email" name="email"
                                                     placeholder="Email" />
+                                                @error('email')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input id="password" required="" type="password" name="password"
+                                                <input id="password" type="password" name="password"
                                                     placeholder="Password" />
+                                                @error('password')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input id="password_confirmation" required="" type="password"
+                                                <input id="password_confirmation"  type="password"
                                                     name="password_confirmation" placeholder="Confirm password" />
                                             </div>
 
